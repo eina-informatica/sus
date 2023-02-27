@@ -1,33 +1,13 @@
 #!/bin/bash
+#839756, Vlasceanu, Andrei Gabriel, [M], [3], [A]
+#842236, Yubero Segura, Andres, [M], [3], [A]
 
-echo -n "Introduzca el nombre del fichero: " 
-read file
-
-if test -f "$file"
+echo -n "Introduzca el nombre del fichero: "
+read FILENAME
+if test -f $FILENAME
 then
-    echo -n "Los permisos del archivo $file son: "
-    
-    if test -r "$file"
-    then
-        echo -n "r"
-    else
-        echo -n "-"
-    fi
-
-    if test -w "$file"
-    then
-        echo -n "w"
-    else
-        echo -n "-"
-    fi
-
-    if test -x "$file"
-    then
-        echo "x"
-    else
-        echo "-"
-    fi
-
+    echo -n "Los permisos del archivo $FILENAME son: "
+    echo ls -l $FILENAME | cut -c2-4
 else
-    echo "$file no existe"
+    echo "$FILENAME no existe"
 fi
