@@ -2,12 +2,12 @@
 #839756, Vlasceanu, Andrei Gabriel, [M], [3], [A]
 #842236, Yubero Segura, Andres, [M], [3], [A]
 
-for FILENAME in $*
+for filename in $*
 do
-    if test -f $FILENAME
+    if test -f $filename
     then
-        more $FILENAME
+        more $filename
     else
-        echo "$FILENAME no es un fichero."
+        echo "$filename no es un fichero."
     fi
 done
