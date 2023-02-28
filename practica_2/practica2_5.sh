@@ -4,10 +4,10 @@
 
 echo -n "Introduzca el nombre de un directorio: "
 read directory
-if test -d $directory
+if test -d "$directory"
 then
-    nFiles=`ls -l $directory | grep ^- | wc -l`
-    nDirectories=`ls -l $directory | grep ^d | wc -l`
+    nFiles=`ls -l "$directory" | grep ^- | wc -l`
+    nDirectories=`ls -l "$directory" | grep ^d | wc -l`
     echo "El numero de ficheros y directorios en $directory es de $nFiles y $nDirectories, respectivamente"
 else
     echo "$directory no es un directorio"

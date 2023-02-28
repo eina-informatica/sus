@@ -4,10 +4,10 @@
 
 if test $# == 1
 then
-    if test -f $1
+    if test -f "$1"
     then
-        chmod ug+x $1
-        stat -c %A $1 
+        chmod ug+x "$1"
+        stat -c %A "$1" 
     else
         echo "$1 no existe"
     fi
