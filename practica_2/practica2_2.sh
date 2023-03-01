@@ -1,6 +1,6 @@
 #!/bin/bash
-#839756, Vlasceanu, Andrei Gabriel, [M], [3], [A]
-#842236, Yubero Segura, Andres, [M], [3], [A]
+#839756, Vlasceanu, Andrei Gabriel, M, 3, A
+#842236, Yubero Segura, Andres, M, 3, A
 
 # Iteramos por cada uno de los ficheros que nos han pasado como parámetro,
 # respetando aquellos que tienen espacios en el nombre

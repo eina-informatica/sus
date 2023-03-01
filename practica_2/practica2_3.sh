@@ -1,6 +1,6 @@
 #!/bin/bash
-#839756, Vlasceanu, Andrei Gabriel, [M], [3], [A]
-#842236, Yubero Segura, Andres, [M], [3], [A]
+#839756, Vlasceanu, Andrei Gabriel, M, 3, A
+#842236, Yubero Segura, Andres, M, 3, A
 
 # Comprueba que solo se la haya pasado un parámetro
 if test "$#" == 1
