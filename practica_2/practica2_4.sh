@@ -8,7 +8,7 @@ read key
 # Se selecciona solo el primer caracter introducido
 key=`echo $key | cut -c1-1`
 # Se diferencian los distintos casos
-case $key in
+case "$key" in
     # Si es un número se indica por salida estandar
     [0-9] ) echo "$key es un numero";;
     # Si es una letra se indica por salida estander

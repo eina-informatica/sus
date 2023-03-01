@@ -3,10 +3,11 @@
 #842236, Yubero Segura, Andres, [M], [3], [A]
 
 # Explicación de la primera línea de código
-# - Con "stat -c %n,%Y ~/bin???" obtenemos los ficheros del estilo binXXX que se encuentran en root
+# - Con "stat -c %n,%Y ~/bin???" obtenemos los directorios del estilo binXXX 
+#   que se encuentran en root
 # - Con "2> /dev/null" nos deshacemos de la salida de error del comando anterior
-# - Con "sort -t ',' -k 2", usando la coma como separador ordenamos los resultados 
-#   en función de la fecha de modificación (segunda clave), menos reciente primero
+# - Con "sort -t ',' -k 2", ordenamos los resultados usando la coma como separador
+#   en función de la fecha de modificación (segunda clave), más antiguo primero
 # - Con "head -n 1" seleccionamos la primera línea del resultado del "sort"
 # - Finalmente cortamos usando la coma y seleccionando el primer campo que es el nombre
 dir=`stat -c %n,%Y ~/bin??? 2> /dev/null | sort -t ',' -k 2 | head -n 1 | cut -d ',' -f 1`

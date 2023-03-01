@@ -18,6 +18,6 @@ then
     # Se comprueba si el usuario puede ejecutar el archivo
     if test -x "$filename"; then echo "x"; else echo "-"; fi
 else    
-    # Si no es un fichero regular se indica por salida estandar
+    # Si no es un fichero regular se indica por salida estándar
     echo "$filename no existe"
 fi

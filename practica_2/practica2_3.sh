@@ -3,7 +3,7 @@
 #842236, Yubero Segura, Andres, [M], [3], [A]
 
 # Comprueba que solo se la haya pasado un parámetro
-if test $# == 1
+if test "$#" == 1
 then
     # Comprueba que se un fichero regular
     if test -f "$1"
