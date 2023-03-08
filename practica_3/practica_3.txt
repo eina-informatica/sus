@@ -1,0 +1,9 @@
+b)
+sudo visudo
+
+Añadir línea:
+as ALL=(ALL) NOPASSWD:ALL
+
+---
+
+c)
