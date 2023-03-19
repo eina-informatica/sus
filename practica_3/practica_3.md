@@ -11,6 +11,7 @@ He aquí el orden tomado para cumplir con los requisitos del enunciado:
         * `-K UID_MIN=1815` para establecer que el UID sea mayor o igual que 1815.
         * `-U` para crear un grupo con el mismo nombre del usuario, y añadir al usuario a ese grupo.
         * `"$usuario"` para crear un usuario con el nombre dado por *$usuario*.
+        
     sfdsfsf
     * **Caso -s (suprimir):**Se crea una nuevo directorio */extra/backup* con el comando `mkdir`.
-    Se lee de linea en linea del fichero introducido como parámetro para sacar los usuarios. Con el comando `getent passwd "$usuario" | cut  
+    Se lee de linea en linea del fichero introducido como parámetro para sacar los usuarios. Con el comando `getent passwd "$usuario"`  
