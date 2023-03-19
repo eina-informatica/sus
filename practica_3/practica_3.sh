@@ -34,12 +34,14 @@ then
                     echo "El usuario $usuario ya existe"
                 else
                     # Creamos el usuario
-                    useradd -m -k /etc/skel -c "$nombre" -K UID_MIN=1815 -U -p "$clave" "$usuario" &>/dev/null
+                    useradd -m -k /etc/skel -c "$nombre" -K UID_MIN=1815 -U "$usuario" &>/dev/null
                     if test $? -eq 0
                     then
+                        # Cambiamos la contraseña del usuario
                         echo "$usuario:$clave" | chpasswd &>/dev/null
                         # Establecemos la contraseña para 30 días
                         passwd -x 30 "$usuario" &>/dev/null
+                        # Añadimos al usuario al grupo de sudoers
                         usermod -aG "sudo" "$usuario" &>/dev/null
                         echo "$nombre ha sido creado"
                     fi
