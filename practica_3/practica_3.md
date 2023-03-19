@@ -19,4 +19,4 @@ He aquí el orden tomado para cumplir con los requisitos del enunciado:
 
         Se hace un respaldo del home de usuario, que se procederá a eliminar, y se guarda en el directorio */extra/backup* en formato *.tar* con el nombre del usuario. Se comprueba que se ha creado correctamente el backup y se procede a eliminar le usuario con el comando `userdel -fr "$usuario"`.
 
-    * **Ningún caso de los anteriores:** Mostramos *Opcion invalida* por pantalla.
+    * **En cualquier otro caso (ni -a ni -s):** Mostramos *Opcion invalida* por pantalla.
