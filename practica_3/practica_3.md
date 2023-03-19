@@ -5,5 +5,6 @@ He aquí el orden tomado para cumplir con los requisitos del enunciado:
 2. Se mira que el número de parámetros sea exactamente 2, haciendo uso de `$#`.
 3. Si el número de parámetros es 2, se comprueba si el primer parámetro es `-a` o `-s`.
     * **Caso -a (añadir):** Para comprobar si previamente existe un usuario, se usa `id -u "$usuario"`. 
+    
     Si no existe, creamos uno nuevo usando `useradd` con los siguientes parámetros `-m` para crear un directorio home, 
     * **Caso -s (suprimir):**
