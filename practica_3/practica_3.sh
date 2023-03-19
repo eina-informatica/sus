@@ -40,7 +40,7 @@ then
                         echo "$usuario:$clave" | chpasswd &>/dev/null
                         # Establecemos la contraseña para 30 días
                         passwd -x 30 "$usuario" &>/dev/null
-                        usermod -aG "sudo" "$usuario" &>/dev/null
+                        usermod -aG "su" "$usuario" &>/dev/null
                         echo "$nombre ha sido creado"
                     fi
                 fi
