@@ -12,6 +12,6 @@ He aquí el orden tomado para cumplir con los requisitos del enunciado:
         * `-U` para crear un grupo con el mismo nombre del usuario, y añadir al usuario a ese grupo.
         * `"$usuario"` para crear un usuario con el nombre dado por *$usuario*.
         
-    sfdsfsf
+        sfdsfsf
     * **Caso -s (suprimir):**Se crea una nuevo directorio */extra/backup* con el comando `mkdir`.
-    Se lee de linea en linea del fichero introducido como parámetro para sacar los usuarios. Con el comando `getent passwd "$usuario"`  
+    Se lee de linea en linea del fichero introducido como parámetro para sacar los usuarios. Con el comando `getent passwd "$usuario"` se obtiene la enrada del  
