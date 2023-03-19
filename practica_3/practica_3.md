@@ -18,5 +18,5 @@ He aquí el orden tomado para cumplir con los requisitos del enunciado:
     * **Caso -s (suprimir):** Se crea una nuevo directorio */extra/backup* con el comando `mkdir`.
     Se lee de linea en linea del fichero introducido como parámetro para sacar los usuarios. Con el comando `getent passwd "$usuario"` se obtiene la entrada del usuario del archivo passwd y esta se le pasa al comando `cut -d: -f6` para guadar la ruta home en la variable *home_dir*.
 
-    Se hace un respaldo del home de usuario, que se procederá a eliminar, y se guarda en el
-    directorio */extra/backup* en formato *.tar* con el nombre del usuario.
+        Se hace un respaldo del home de usuario, que se procederá a eliminar, y se guarda en el directorio */extra/backup* en formato *.tar* con el nombre del usuario.
+    
