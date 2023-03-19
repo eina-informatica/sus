@@ -41,7 +41,7 @@ then
                         echo "$usuario:$clave" | chpasswd &>/dev/null
                         # Establecemos la contraseña para 30 días
                         passwd -x 30 "$usuario" &>/dev/null
-                        # Añadimos al usuario al grupo de sudoers
+                        # Añadimos el usuario al grupo de sudoers
                         usermod -aG "sudo" "$usuario" &>/dev/null
                         echo "$nombre ha sido creado"
                     fi

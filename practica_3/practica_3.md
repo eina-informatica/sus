@@ -14,9 +14,6 @@ He aquí el orden tomado para cumplir con los requisitos del enunciado:
         * `-U` para crear un grupo con el mismo nombre del usuario, y añadir al usuario a ese grupo.
         * `"$usuario"` para crear un usuario con el nombre dado por *$usuario*.
         
-        Si no ha habido errores con el comando anterior (lo comprobamos con `$?`), se procede cambiar la contraseña del usuario con `chpasswd` y a establecer con `passwd -x 30 "$usuario"` un periodo de duración de la contraseña de 30 días.
-    * **Caso -s (suprimir):** Se crea una nuevo directorio */extra/backup* con el comando `mkdir`.
-    Se lee de linea en linea del fichero introducido como parámetro para sacar los usuarios. Con el comando `getent passwd "$usuario"` se obtiene la entrada del usuario del archivo passwd y esta se le pasa al comando `cut -d: -f6` para guadar la ruta home en la variable *home_dir*.
-
-        Se hace un respaldo del home de usuario, que se procederá a eliminar, y se guarda en el directorio */extra/backup* en formato *.tar* con el nombre del usuario.
-    
+        Si no ha habido errores con el comando anterior (lo comprobamos con `$?`), se procede cambiar la contraseña del usuario con `chpasswd` y a establecer con `passwd -x 30 "$usuario"` un periodo de duración de la contraseña de 30 días. Luego, con `usermod -aG "sudo" "$usuario"` añadimos el usuario al grupo de *sudoers*. Finalmente mostramos por pantalla que el usuario ha sido creado.
+    * **Caso -s (suprimir):** Se crea una nuevo directorio */extra/backup* con el comando `mkdir` usando `-p` para crear los directorios padre. Se lee de línea en línea del fichero introducido como parámetro para sacar los usuarios. Con el comando `getent passwd "$usuario"` se obtiene la entrada del usuario del fichero */etc/passwd* y esta se le pasa al comando `cut -d: -f6` para guadar la ruta home en la variable *home_dir*.
+    Se hace un respaldo del home de usuario, que se procederá a eliminar, y se guarda en el directorio */extra/backup* en formato *.tar* con el nombre del usuario. Se comprueba que se ha creado correctamente el backup y se procede a eliminar le usuario con el comando `userdel -fr "$usuario"`.
