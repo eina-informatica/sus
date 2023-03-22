@@ -1,5 +1,10 @@
 # Tests para las prácticas de Administración de Sistemas
 
+## Problemas con cdrom
+
+`nano /etc/apt/sources.list` Comentar todo lo que tenga que ver con cdrom
+
+
 Este repositorio contiene tests para realizar pruebas en los scripts realizados
 en las sesiones de prácticas de la asignatura de Administración de Sistemas del
 grado de Ingeniería en Informática de la Universidad de Zaragoza.
