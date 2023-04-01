@@ -1,34 +1,15 @@
-# Cambiamos el IFS, guardando su valor actual el oldIFS
-        oldIFS=$IFS
-        IFS=,
-        # Leemos cada una de las líneas del fichero (hay una línea por usuario)
-        while read -r usuario clave nombre
-        do
-            # Comprobamos que no hay campos inválidos
-            if test -z "$usuario" || test -z "$clave" || test -z "$nombre"
-            then
-                echo "Campo invalido"
-                exit 2
-            else
-                # Comprobamos si el usuario ya existe
-                if id -u "$usuario" >/dev/null 2>&1
-                then
-                    echo "El usuario $usuario ya existe"
-                else
-                    # Creamos el usuario
-                    useradd -m -k /etc/skel -c "$nombre" -K UID_MIN=1815 -U "$usuario" &>/dev/null
-                    if test $? -eq 0
-                    then
-                        # Cambiamos la contraseña del usuario
-                        echo "$usuario:$clave" | chpasswd &>/dev/null
-                        # Establecemos la contraseña para 30 días
-                        passwd -x 30 "$usuario" &>/dev/null
-                        # Añadimos el usuario al grupo de sudoers
-                        usermod -aG "sudo" "$usuario" &>/dev/null
-                        echo "$nombre ha sido creado"
-                    fi
-                fi
-            fi
-        done < $2
-        # Devolvemos el valor original a IFS
-        IFS=$oldIFS
+# Creamos el usuario
+                            useradd -m -k /etc/skel -c "$nombre" -K UID_MIN=1815 -U "$usuario" &>/dev/null
+                            if test $? -eq 0
+                            then
+                                # Cambiamos la contraseña del usuario
+                                echo "$usuario:$clave" | chpasswd &>/dev/null
+                                # Establecemos la contraseña para 30 días
+                                passwd -x 30 "$usuario" &>/dev/null
+                                # Añadimos el usuario al grupo de sudoers
+                                usermod -aG "sudo" "$usuario" &>/dev/null
+                                echo "$nombre ha sido creado"
+                            fi
+
+
+ssh -n as@$ip "sudo useradd -m -k /etc/skel -c $nombre -K UID_MIN=1815 -U $usuario &>/dev/null; if test $? -eq 0; then echo "$usuario:$clave" | sudo chpasswd &>/dev/null; sudo usermod -aG "sudo" "$usuario" &>/dev/null; echo "$nombre ha sido creado"; fi"
