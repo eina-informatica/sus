@@ -9,8 +9,11 @@ En primer lugar, se debe instalar sudo con el comando `apt install sudo`. Luego,
 Seguidamente, se debe configurar la interfaz de red en */etc/network/interfaces* con los siguientes parámetros:
 
 `auto enp0s3 
+
 iface enp0s3 inet static 
+
 address 192.168.56.11 # 192.168.56.12 para debian-as2
+
 netmask 255.255.255.0`
 
 Después, se comprueba con 
