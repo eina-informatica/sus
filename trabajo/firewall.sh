@@ -17,7 +17,11 @@ iptables -t nat -A POSTROUTING -s 192.168.13.0/24 -o enp0s3 -j MASQUERADE
 iptables -t nat -A PREROUTING -i enp0s8 -j DNAT --to 192.168.57.2
 iptables -t nat -A POSTROUTING -o enp0s8 -j SNAT --to 192.168.57.2
 
-# Redirección de peticiones al servidor web de Apache de debian2 y al servidor ssh de debian5
+# Redirección de peticiones desde el NAT al servidor web de Apache de debian2 y al servidor ssh de debian5
+iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 22 -j DNAT --to 192.168.13.2:22
+iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 80 -j DNAT --to 192.168.11.2:80
+
+# Redirección de peticiones desde el host al servidor web de Apache de debian2 y al servidor ssh de debian5
 iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 22 -j DNAT --to 192.168.13.2:22
 iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 80 -j DNAT --to 192.168.11.2:80
 
