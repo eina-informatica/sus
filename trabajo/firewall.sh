@@ -26,10 +26,8 @@ iptables -t nat -A PREROUTING -i enp0s3 -p tcp --dport 22 -j DNAT --to 192.168.1
 iptables -t nat -A PREROUTING -i enp0s3 -p tcp --dport 80 -j DNAT --to 192.168.11.2:80
 
 # Permitimos el paso del tráfico hacia la extranet (SSH y servidor web)
-iptables -A FORWARD -i enp0s3 -p tcp --dport 22 -j ACCEPT
-iptables -A FORWARD -i enp0s3 -p tcp --dport 80 -j ACCEPT
-iptables -A FORWARD -i enp0s8 -p tcp --dport 22 -j ACCEPT
-iptables -A FORWARD -i enp0s8 -p tcp --dport 80 -j ACCEPT
+iptables -A FORWARD -i enp0s3 -p all -j ACCEPT
+iptables -A FORWARD -i enp0s8 -p all-j ACCEPT
 
 # Permitimos todo el paso hacia red interna 1 y red interna 2
 iptables -A FORWARD -i enp0s9 -p all -j ACCEPT
