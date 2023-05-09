@@ -40,14 +40,14 @@ iptables -A FORWARD -d 192.168.13.2 -p tcp --dport 22 -j ACCEPT
 iptables -A FORWARD -d 192.168.11.2 -p tcp --dport 80 -j ACCEPT
 iptables -A FORWARD -d 192.168.11.2 -p tcp --dport 443 -j ACCEPT
 
-# Permite que entre todo el tráfico de intranet y la respuesta del host a los pings
+# Permite que entre todo el tráfico de intranet y la respuesta a conexiones ya establecidas
 #iptables -A INPUT -i enp0s8 -p icmp --icmp-type 0 -j ACCEPT
 #iptables -A INPUT -i enp0s3 -p all -j ACCEPT
 iptables -A INPUT -i lo -p all -j ACCEPT
 iptables -A INPUT -i enp0s9 -p all -j ACCEPT
 iptables -A INPUT -i enp0s10 -p all -j ACCEPT
-#iptables -A INPUT -i enp0s3 -m state --state ESTABLISHED,RELATED -j ACCEPT
-#iptables -A INPUT -i enp0s8 -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -A INPUT -i enp0s3 -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -A INPUT -i enp0s8 -m state --state ESTABLISHED,RELATED -j ACCEPT
 
 # Se hace logging
 iptables -A INPUT -i enp0s3 -j LOG
