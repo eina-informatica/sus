@@ -12,7 +12,7 @@ fi
 ip=$1
 
 # Comprobamos que podemos conectarnos a la máquina
-ssh -n as@ip$$1 &>/dev/null
+ssh -n as@$ip &>/dev/null
 if test "$?" -eq 0
 then
     # Comprobamos la situación de uso y organización de espacio de disco
