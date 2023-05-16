@@ -17,9 +17,9 @@ if test "$?" -eq 0
 then
     # Comprobamos la situación de uso y organización de espacio de disco
     echo "Discos duros disponibles y sus tamaños:"
-    ssh -n as@$ip "sfdisk -s"
+    ssh -n as@$ip "sudo sfdisk -s"
     echo "Particiones y sus tamaños:"
-    ssh -n as@$ip "sfdisk -l"
+    ssh -n as@$ip "sudo sfdisk -l | grep /dev/sd"
 
     # Información de montaje de sistemas de ficheros (salvo tmpfs)
     echo "Información de montaje de sistemas de ficheros:"
