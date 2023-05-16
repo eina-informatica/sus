@@ -9,7 +9,13 @@ if [ $# -lt 2 ]; then
 fi
 
 # Primer parámetro: grupo volumen
-grupo_volumen=$1
+gvol=$1
+
+# Resto de los parámetros: particiones a añadir
+particiones="${@:2}"
 
 # Extender el grupo volumen
-vgextend $grupo_volumen $@
+for particion in "$particiones"; do
+  sudo vgextend $gvol $particion
+done
+#vgextend $grupo_volumen $particiones
