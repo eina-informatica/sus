@@ -11,8 +11,5 @@ fi
 # Primer parámetro: grupo volumen
 grupo_volumen=$1
 
-# Resto de los parámetros: particiones a añadir
-particiones="${@:2}"
-
 # Extender el grupo volumen
-vgextend $grupo_volumen $particiones
+vgextend $grupo_volumen $@
