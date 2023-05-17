@@ -32,12 +32,7 @@ do
             fi
             
             # Montar el volumen lógico
-            mount "$vdir"
-            
-            # Agregar la entrada al archivo /etc/fstab si el volumen lógico es nuevo
-            if ! grep -q "$lv_name" /etc/fstab; then
-                echo "$vdir $mount_dir $fs_type defaults 0 0" >> /etc/fstab
-            fi
+            mount "$vdir" "$mount_dir"
         fi
     fi
 done
