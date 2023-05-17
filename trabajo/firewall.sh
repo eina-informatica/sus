@@ -21,13 +21,15 @@ iptables -t nat -A POSTROUTING -o enp0s8 -j SNAT --to 192.168.57.2
 #iptables -t nat -A PREROUTING -i enp0s3 -p tcp --dport 22 -j DNAT --to 192.168.13.2:22
 #iptables -t nat -A PREROUTING -i enp0s3 -p tcp --dport 80 -j DNAT --to 192.168.11.2:80
 #iptables -t nat -A PREROUTING -i enp0s3 -p tcp --dport 443 -j DNAT --to 192.168.11.2:443
-iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination 192.168.11.2:80
+#iptables -t nat -A PREROUTING -p tcp --dport 80 -j DNAT --to-destination 192.168.11.2:80
+iptables -t nat -A PREROUTING -i enp0s3 -p tcp --dport 80 -j DNAT --to-destination 192.168.11.2:80
 
 # Redirección de peticiones desde el host al servidor web de Apache de debian2 y al servidor ssh de debian5
 #iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 22 -j DNAT --to 192.168.13.2:22
 #iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 80 -j DNAT --to 192.168.11.2:80
 #iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 443 -j DNAT --to 192.168.11.2:443
 #iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 80 -j DNAT --to-destination 192.168.11.2:80
+iptables -t nat -A PREROUTING -i enp0s8 -p tcp --dport 80 -j DNAT --to-destination 192.168.11.2:80
 
 # Se permite el paso del tráfico hacia la extranet (SSH y servidor web)
 iptables -A FORWARD -i enp0s3 -p all -j ACCEPT
@@ -55,6 +57,7 @@ iptables -A INPUT -i enp0s10 -p all -j ACCEPT
 #iptables -A INPUT -i enp0s8 -m state --state ESTABLISHED,RELATED -j ACCEPT
 
 iptables -t nat -A POSTROUTING -j MASQUERADE
+iptables -t nat -A POSTROUTING -o enp0s3 -p tcp --dport 80 -d 192.168.11.2 -j SNAT
 
 # Se hace logging
 iptables -A INPUT -i enp0s3 -j LOG

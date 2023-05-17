@@ -15,7 +15,7 @@ gvol=$1
 particiones="${@:2}"
 
 # Extender el grupo volumen
-for particion in "$particiones"; do
+'''for particion in "$particiones"; do
   sudo vgextend $gvol $particion
-done
-#vgextend $grupo_volumen $particiones
+done'''
+vgextend $grupo_volumen $particiones
