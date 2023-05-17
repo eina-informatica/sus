@@ -43,6 +43,7 @@ iptables -A FORWARD -i enp0s10 -p all -j ACCEPT
 #iptables -A FORWARD -d 192.168.11.2 -p tcp --dport 443 -j ACCEPT
 iptables -A FORWARD -p tcp --dport 80 -d 192.168.11.2 -j ACCEPT
 iptables -A FORWARD -p tcp --sport 80 -s 192.168.11.2 -j ACCEPT
+iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
 
 # Permite que entre todo el tráfico de intranet y la respuesta a conexiones ya establecidas
 #iptables -A INPUT -i enp0s8 -p icmp --icmp-type 0 -j ACCEPT
