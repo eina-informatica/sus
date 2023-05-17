@@ -50,8 +50,8 @@ iptables -A FORWARD -p tcp --dport 80 -d 192.168.11.2 -j ACCEPT
 iptables -A INPUT -i lo -p all -j ACCEPT
 iptables -A INPUT -i enp0s9 -p all -j ACCEPT
 iptables -A INPUT -i enp0s10 -p all -j ACCEPT
-iptables -A INPUT -i enp0s3 -m state --state ESTABLISHED,RELATED -j ACCEPT
-iptables -A INPUT -i enp0s8 -m state --state ESTABLISHED,RELATED -j ACCEPT
+#iptables -A INPUT -i enp0s3 -m state --state ESTABLISHED,RELATED -j ACCEPT
+#iptables -A INPUT -i enp0s8 -m state --state ESTABLISHED,RELATED -j ACCEPT
 
 # Se hace logging
 iptables -A INPUT -i enp0s3 -j LOG
