@@ -12,7 +12,7 @@ do
     lvdisplay | grep "$vdir" &> /dev/null
 
     # Verificar si el volumen lógico ya existe
-    if [ $? -eq 0 ]
+    if [ $? -eq 0 ]; then
         echo "El volumen lógico $lv_name ya existe. Lo ampliamos."
         # Extiende el volumen lógico
         lvextend -L$size $vdir
