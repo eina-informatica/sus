@@ -1,5 +1,7 @@
 Después de crear las máquinas virtuales, renombramos los hostnames para identificarlas mejor con nano /etc/hostname.
 
+-----
+
 IPs para cada red interna
 Red interna 1: 192.168.11.0/24
 Red interna 2: 192.168.12.0/24
@@ -7,7 +9,7 @@ Red interna 3: 192.168.13.0/24
 
 Configuramos la red en cada debian con nano /etc/network/interfaces
 Debian1:
-	auto enp0s8 
+auto enp0s8 
 iface enp0s8 inet static 
 address 192.168.57.2
 
@@ -58,7 +60,7 @@ gateway 192.168.13.1
 network 192.168.13.0
 
 Debian6:
-	# Red interna 2
+# Red interna 2
 auto enp0s3
 iface enp0s3 inet static
 address 192.168.12.2
@@ -72,8 +74,8 @@ iface enp0s8 inet static
 address 192.168.13.1
 netmask 255.255.255.0
 network 192.168.13.0
-	
- systemctl restart networking
+
+-----
 
 Configuración servidor DHCP
 sudo apt install isc-dhcp-server
@@ -99,6 +101,9 @@ Descomentar net.ipv4.ip_forward=1
 /etc/hosts -> Cambiar as-debian por debian1
 sudo service isc-dhcp-server status
 sudo /etc/init.d/isc-dhcp-server restart
+
+-----
+
 Configurar firewall y router
 sudo apt install iptables-persistent
 
@@ -150,6 +155,8 @@ iptables-save > /etc/iptables/rules.v4
 Se comprueban que los paquetes que llegan a un debian con
 tcpdump -i <nombre interfaz>
 
+-----
+
 Instalar nginx
 apt install nginx
 systemctl status nginx
@@ -158,10 +165,14 @@ systemctl start nginx
 Para ver la web por terminal se puede usar “curl”
 apt install curl
 
+-----
+
 Configuración en /etc/network/interfaces
 Debian1
 up ip route add 192.168.13.0/24 via 192.168.12.2 dev enp0s10
 up ip route add 192.168.57.0/24 via 192.168.57.2 dev enp0s8
+
+-----
 
 Instalar ssh
 Posteriormente, se instala el servidor SSH con `sudo apt install openssh-server`, se edita el archivo de configuración de SSH en */etc/ssh/sshd_config* con el comando `nano /etc/ssh/sshd_config` y se añade la línea `PermitRootLogin no` para deshabilitar el acceso de root mediante SSH.
